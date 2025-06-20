@@ -1,14 +1,14 @@
 <?php
-    $week=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    foreach($week as $i)
+    $weeks=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    foreach($weeks as $week)
     {
-        echo "$i"."\n";
+        echo "$week"."\n";
     }
 
     echo "\n";
     $interns=["Int 1"=>"Mariya","Int 2"=>"Athira","Int 3"=>"Arjun"];
-    foreach($interns as $x=>$y)
+    foreach($interns as $key=>$value)
     {
-        echo "$x: $y\t";
+        echo "$key: $value\t";
     }
 ?>
