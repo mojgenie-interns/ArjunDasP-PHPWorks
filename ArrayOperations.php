@@ -2,33 +2,33 @@
 
     #Create array
     $size=readline("Enter the size: ");
-    $new_array=[];
+    $newArray=[];
     $i=0;
     echo "Enter the items:\n";
     while($i<$size)
     {
-        $new_array[$i]=readline();
+        $newArray[$i]=readline();
         $i++;
     }
 
     #Display array
     echo "\nArray: ";
-    foreach($new_array as $j)
+    foreach($newArray as $j)
     {
         echo $j."\t";
     }
 
     #Sort array
     echo "\nAfter sorting,\nArray: ";
-    sort($new_array);
-    foreach($new_array as $j)
+    sort($newArray);
+    foreach($newArray as $j)
     {
         echo $j."\t";
     }
 
     echo "\nIn descending order,\nArray: ";
-    rsort($new_array);
-    foreach($new_array as $j)
+    rsort($newArray);
+    foreach($newArray as $j)
     {
         echo $j."\t";
     }

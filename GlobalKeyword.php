@@ -1,15 +1,15 @@
 <?php
-    $first_number=10;
-    $second_number=20;
+    $firstNumber=10;
+    $secondNumber=20;
 
     function addTwoNumbers()
     {
-        global $first_number;
-        global $second_number;
-        echo $first_number+$second_number;
+        global $firstNumber;
+        global $secondNumber;
+        echo $firstNumber+$secondNumber;
         echo "\n";
     }
 
     addTwoNumbers();
-    echo $first_number+$second_number;
+    echo $firstNumber+$secondNumber;
 ?>

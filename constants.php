@@ -1,6 +1,6 @@
 <?php
     define("email","arjundaspalappilli@gmail.com");
-    const mobile_number=8547323068;
-    echo("Mobile: ".mobile_number."\n");
+    const mobileNumber=8547323068;
+    echo("Mobile: ".mobileNumber."\n");
     echo("Email: ".email);
 ?>

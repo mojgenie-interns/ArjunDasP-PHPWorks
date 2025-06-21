@@ -1,10 +1,10 @@
 <?php
-    function AddingTwoNumbers($number_1,$number_2)
+    function AddingTwoNumbers($number1,$number2)
     {
-        return $number_1+$number_2;
+        return $number1+$number2;
     }
 
     $numbers=readline("Enter two numbers: ");
-    list($number_1,$number_2)=explode(" ",$numbers);
-    echo "$number_1+$number_2=".AddingTwoNumbers($number_1,$number_2);
+    list($number1,$number2)=explode(" ",$numbers);
+    echo "$number1+$number2=".AddingTwoNumbers($number1,$number2);
 ?>

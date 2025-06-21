@@ -3,12 +3,12 @@
         echo "Run $name run\n";
         echo 'Run $name run';
 
-    $string_length=strlen("ARJUN");
-    echo "\nLength of the string is $string_length";
+    $stringLength=strlen("ARJUN");
+    echo "\nLength of the string is $stringLength";
 
-    $string_position=strpos("I am Batman","Batman");
-    echo "\nThe word is at $string_position";
+    $stringPosition=strpos("I am Batman","Batman");
+    echo "\nThe word is at $stringPosition";
 
-    $word_count=str_word_count("DAVID NAINAN");
-    echo "\nNo of words is $word_count";
+    $wordCount=str_word_count("DAVID NAINAN");
+    echo "\nNo of words is $wordCount";
 ?>

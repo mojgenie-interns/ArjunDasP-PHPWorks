@@ -1,10 +1,10 @@
 <?php
-    $array_2d=[[1,"Abhiram","10-04-2003"],[2,"Arjun","20-10-2002"]];
-    foreach($array_2d as $i)
+    $array2D=[[1,"Abhiram","10-04-2003"],[2,"Arjun","20-10-2002"]];
+    foreach($array2D as $row)
     {
-        foreach($i as $j)
+        foreach($row as $column)
         {
-            echo $j."\t";
+            echo $column."\t";
         }
         echo "\n";
     }

@@ -1,8 +1,8 @@
 <?php
     
-    function studentDetails($roll_no,$name,$college="Mary Matha Arts & Science College")
+    function studentDetails($rollNo,$name,$college="Mary Matha Arts & Science College")
     {
-        echo "Roll no: $roll_no\tName: $name\tCollege: $college\n";       
+        echo "Roll no: $rollNo\tName: $name\tCollege: $college\n";       
     }
     
     studentDetails(9,"Athira V Anil");
