@@ -1,19 +1,19 @@
 <?php
     $numbers=readline("Enter three numbers: ");
-    list($number_1,$number_2,$number_3)=explode(" ",$numbers);
-    if($number_1>$number_2)
+    list($number1,$number2,$number3)=explode(" ",$numbers);
+    if($number1>$number2)
     {
-        if($number_1>$number_3)
-            $largest_number=$number_1;
+        if($number1>$number3)
+            $largestNumber=$number1;
         else
-            $largest_number=$number_3;
+            $largestNumber=$number3;
     }
     else
     {
-        if($number_2>$number_3)
-            $largest_number=$number_2;
+        if($number2>$number3)
+            $largestNumber=$number2;
         else
-            $largest_number=$number_3;
+            $largestNumber=$number3;
     }
-    echo "Largest number is $largest_number";
+    echo "Largest number is $largestNumber";
 ?>
