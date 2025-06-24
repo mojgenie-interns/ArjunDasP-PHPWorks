@@ -7,6 +7,7 @@
             echo self::MESSAGE;
         }
     }
-    $warning1=new Warning();
-    $warning1->calling();
+    // $warning1=new Warning();
+    // $warning1->calling();
+    echo Warning::MESSAGE;
 ?>
