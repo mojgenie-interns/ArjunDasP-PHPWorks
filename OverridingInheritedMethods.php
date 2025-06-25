@@ -2,7 +2,7 @@
      class Username
      {
         public $username;
-        final function display($username)
+        function display($username)
         {
             $this->username=$username;
             echo "Username: $username";
