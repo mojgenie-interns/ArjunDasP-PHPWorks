@@ -1,7 +1,7 @@
 <?php
-    class JusticeLeague
+    final class JusticeLeague
     {
-        final function call()
+        function call()
         {
             echo "JUSTICE LEAGUE".PHP_EOL;
         }

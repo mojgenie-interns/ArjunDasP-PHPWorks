@@ -17,6 +17,4 @@
             echo "Password: $password";
         }
      }
-     $user1=new Password();
-     $user1->display("nishadasan");
 ?>
