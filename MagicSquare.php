@@ -66,9 +66,8 @@
         }
     }
 
-    class magicSquare
+    class magicSquare extends circularGrid
     {
-        public circularGrid $grid;
         public $size;
 
         function __construct($size)
@@ -76,22 +75,22 @@
             if($size%2==0)
                 throw new Exception("Enter an odd number");
             $this->size=$size;
-            $this->grid=new circularGrid($size);
+            parent::__construct($size);
         }
 
         function generate()
         {
             for($number=1;$number<=$this->size*$this->size;$number++)
             {
-                $this->grid->setCurrent($number);
-                $nextRow=($this->grid->currentRow-1+$this->size)%$this->size;
-                $nextColumn=($this->grid->currentColumn+1)%$this->size;
-                if($this->grid->isOccupied($nextRow,$nextColumn))
-                    $this->grid->moveDown();
+                $this->setCurrent($number);
+                $nextRow=($this->currentRow-1+$this->size)%$this->size;
+                $nextColumn=($this->currentColumn+1)%$this->size;
+                if($this->isOccupied($nextRow,$nextColumn))
+                    $this->moveDown();
                 else
                     {
-                        $this->grid->currentRow=$nextRow;
-                        $this->grid->currentColumn=$nextColumn;
+                        $this->currentRow=$nextRow;
+                        $this->currentColumn=$nextColumn;
                     }
             }   
         }
@@ -103,7 +102,7 @@
 
         function display(gridDisplayInterface $display)
         {
-            $display->display($this->grid);
+            $display->display($this);
         }
     }
 
