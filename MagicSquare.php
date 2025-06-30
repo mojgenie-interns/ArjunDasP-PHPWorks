@@ -45,14 +45,9 @@
             $this->data[$row][$column]=$value;
         }
 
-        function get($row,$column)
-        {
-            return $this->data[$row][$column];
-        }
-
         function isOccupied($row,$column)
         {
-            return $this->get($row,$column)!=0;
+            return $this->data[$row][$column]!=0;
         }
 
         function setCurrent($value)
@@ -104,11 +99,47 @@
         {
             $display->display($this);
         }
+
+        function isMagic()
+        {
+            $sumExpected=$this->getMagicSum();
+            
+            for($row=0;$row<$this->size;$row++)
+            {
+                $sum=0;
+                for($column=0;$column<$this->size;$column++)
+                {
+                    $sum+=$this->data[$row][$column];
+                }
+                echo "\nSum of row $row=",$sum;
+            }
+
+            for($column=0;$column<$this->size;$column++)
+            {
+                $sum=0;
+                for($row=0;$row<$this->size;$row++)
+                {
+                    $sum+=$this->data[$row][$column];
+                }
+                echo "\nSum of column $column=",$sum;
+            }
+
+            $sumOfDiagonal1=0;
+            for($i=0;$i<$this->size;$i++)
+                $sumOfDiagonal1+=$this->data[$i][$i];
+            echo "\nSum of diagonal 1=",$sumOfDiagonal1;
+
+            $sumOfDiagonal2=0;
+            for($i=0;$i<$this->size;$i++)
+                $sumOfDiagonal2+=$this->data[$i][$this->size-$i-1];
+           echo "\nSum of diagonal 2=",$sumOfDiagonal2;
+        }
     }
 
     $size=readline("Enter the size: ");
     $magicSquare1=new magicSquare($size);
     $magicSquare1->generate();
     $magicSquare1->display(new consoleDisplay());
-    echo "Magic sum=",$magicSquare1->getMagicSum();
+    echo "Magic sum=",$magicSquare1->getMagicSum(),PHP_EOL;
+    $magicSquare1->isMagic();
 ?>
