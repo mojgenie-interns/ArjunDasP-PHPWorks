@@ -1,13 +1,13 @@
 <?php
     
-    interface gridDisplayInterface
+    interface GridDisplayInterface
     {
-        function display(circularGrid $grid);
+        function display(CircularGrid $grid);
     }
 
-    class consoleDisplay implements gridDisplayInterface
+    class ConsoleDisplay implements GridDisplayInterface
     {
-        function display(circularGrid $grid)
+        function display(CircularGrid $grid)
         {
             foreach($grid->getData() as $row)
             {
@@ -20,7 +20,7 @@
         }
     }
 
-    class circularGrid
+    class CircularGrid
     {
         public $data;
         public $size;
@@ -61,7 +61,7 @@
         }
     }
 
-    class magicSquare extends circularGrid
+    class MagicSquare extends CircularGrid
     {
         public $size;
 
@@ -83,10 +83,10 @@
                 if($this->isOccupied($nextRow,$nextColumn))
                     $this->moveDown();
                 else
-                    {
-                        $this->currentRow = $nextRow;
-                        $this->currentColumn = $nextColumn;
-                    }
+                {
+                    $this->currentRow = $nextRow;
+                    $this->currentColumn = $nextColumn;
+                }
             }   
         }
 
@@ -95,7 +95,7 @@
             return (int) ($this->size * ($this->size ** 2 + 1) / 2);
         }
 
-        function display(gridDisplayInterface $display)
+        function display(GridDisplayInterface $display)
         {
             $display->display($this);
         }
@@ -137,9 +137,9 @@
     }
 
     $size=readline("Enter the size: ");
-    $magicSquare1=new magicSquare($size);
+    $magicSquare1=new MagicSquare($size);
     $magicSquare1->generate();
-    $magicSquare1->display(new consoleDisplay());
+    $magicSquare1->display(new ConsoleDisplay());
     echo "Magic sum=",$magicSquare1->getMagicSum(),PHP_EOL;
     $magicSquare1->isMagic();
 ?>
