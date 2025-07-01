@@ -30,24 +30,24 @@
         function __construct($size)
         {
             $this->size=$size;
-            $this->data=array_fill(0,$size,array_fill(0,$size,0));
-            $this->currentRow=0;
-            $this->currentColumn=(int)($size/2);
+            $this->data = array_fill(0,$size,array_fill(0,$size,0));
+            $this->currentRow = 0;
+            $this->currentColumn = (int)($size / 2);
         }
 
         function moveDown()
         {
-            $this->currentRow=($this->currentRow+1)%$this->size;
+            $this->currentRow = ($this->currentRow + 1) % $this->size;
         }
 
         function set($row,$column,$value)
         {
-            $this->data[$row][$column]=$value;
+            $this->data[$row][$column] = $value;
         }
 
         function isOccupied($row,$column)
         {
-            return $this->data[$row][$column]!=0;
+            return $this->data[$row][$column] != 0;
         }
 
         function setCurrent($value)
@@ -67,7 +67,7 @@
 
         function __construct($size)
         {
-            if($size%2==0)
+            if($size % 2 == 0)
                 throw new Exception("Enter an odd number");
             $this->size=$size;
             parent::__construct($size);
@@ -75,24 +75,24 @@
 
         function generate()
         {
-            for($number=1;$number<=$this->size*$this->size;$number++)
+            for($number = 1;$number <= $this->size * $this->size;$number++)
             {
                 $this->setCurrent($number);
-                $nextRow=($this->currentRow-1+$this->size)%$this->size;
-                $nextColumn=($this->currentColumn+1)%$this->size;
+                $nextRow=($this->currentRow - 1 + $this->size) % $this->size;
+                $nextColumn=($this->currentColumn + 1) % $this->size;
                 if($this->isOccupied($nextRow,$nextColumn))
                     $this->moveDown();
                 else
                     {
-                        $this->currentRow=$nextRow;
-                        $this->currentColumn=$nextColumn;
+                        $this->currentRow = $nextRow;
+                        $this->currentColumn = $nextColumn;
                     }
             }   
         }
 
         function getMagicSum()
         {
-            return (int) ($this->size*($this->size**2+1)/2);
+            return (int) ($this->size * ($this->size ** 2 + 1) / 2);
         }
 
         function display(gridDisplayInterface $display)
@@ -104,34 +104,34 @@
         {
             $sumExpected=$this->getMagicSum();
             
-            for($row=0;$row<$this->size;$row++)
+            for($row = 0;$row<$this->size;$row++)
             {
-                $sum=0;
-                for($column=0;$column<$this->size;$column++)
+                $sum = 0;
+                for($column = 0;$column<$this->size;$column++)
                 {
                     $sum+=$this->data[$row][$column];
                 }
                 echo "\nSum of row $row=",$sum;
             }
 
-            for($column=0;$column<$this->size;$column++)
+            for($column = 0;$column<$this->size;$column++)
             {
-                $sum=0;
-                for($row=0;$row<$this->size;$row++)
+                $sum = 0;
+                for($row = 0;$row<$this->size;$row++)
                 {
-                    $sum+=$this->data[$row][$column];
+                    $sum += $this->data[$row][$column];
                 }
                 echo "\nSum of column $column=",$sum;
             }
 
-            $sumOfDiagonal1=0;
-            for($i=0;$i<$this->size;$i++)
-                $sumOfDiagonal1+=$this->data[$i][$i];
+            $sumOfDiagonal1 = 0;
+            for($i = 0;$i<$this->size;$i++)
+                $sumOfDiagonal1 += $this->data[$i][$i];
             echo "\nSum of diagonal 1=",$sumOfDiagonal1;
 
-            $sumOfDiagonal2=0;
-            for($i=0;$i<$this->size;$i++)
-                $sumOfDiagonal2+=$this->data[$i][$this->size-$i-1];
+            $sumOfDiagonal2 = 0;
+            for($i = 0;$i<$this->size;$i++)
+                $sumOfDiagonal2 += $this->data[$i][$this->size - $i - 1];
            echo "\nSum of diagonal 2=",$sumOfDiagonal2;
         }
     }
