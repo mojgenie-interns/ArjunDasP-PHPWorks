@@ -15,7 +15,7 @@ class DigitalClock
             $this->getDate();
             $this->getTime();
 
-            sleep(1);
+            sleep(60);
         }
     }
 

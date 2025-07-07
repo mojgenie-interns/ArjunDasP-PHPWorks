@@ -39,10 +39,10 @@ class Hangman
         while ($chances > 0) {
             $this->displayLetters();
 
-            $letter = strtoupper(readline("Enter a letter: "));
+            $letter = trim(strtoupper(readline("Enter a letter: ")));
 
             if (strlen($letter) !== 1) {
-                echo "Please enter a valid single alphabet letter.\n";
+                echo "Enter a single alphabet letter.\n";
                 continue;
             }
 
@@ -55,13 +55,13 @@ class Hangman
 
             if (strpos($this->word, $letter) === false) {
                 $chances--;
-                echo "Wrong guess. $chances chances left.\n";
+                echo "Wrong guess! $chances chances left.\n";
             } else {
-                echo "Good guess!\n";
+                echo "Good guess.\n";
             }
 
             if ($this->hasWon()) {
-                echo "\nCongratulations! You guessed the word: $this->word\n";
+                echo "\nCongratulations. You guessed the word: $this->word\n";
                 return;
             }
         }
@@ -70,5 +70,5 @@ class Hangman
     }
 }
 
-$game = new Hangman("NISHADASAN");
+$game = new Hangman("master");
 $game->play();
