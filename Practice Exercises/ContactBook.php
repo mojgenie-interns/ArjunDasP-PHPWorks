@@ -18,8 +18,6 @@ class ContactBook
 
         if (file_exists($this->file))
             $this->contacts = json_decode(file_get_contents($this->file), true);
-
-        // $sid = 'ACeb2a1190572dbad7ddebaf26380d3726';
         // $this->client = new Client($sid, $token);
     }
 
