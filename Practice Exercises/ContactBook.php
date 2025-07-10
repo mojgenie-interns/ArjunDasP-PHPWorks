@@ -20,7 +20,6 @@ class ContactBook
             $this->contacts = json_decode(file_get_contents($this->file), true);
 
         // $sid = 'ACeb2a1190572dbad7ddebaf26380d3726';
-        // $token = '83ba2b4e503c706f9c61ecb2290ff9b0';
         // $this->client = new Client($sid, $token);
     }
 
