@@ -1,9 +1,5 @@
 <?php
 
-// require_once 'vendor/autoload.php';
-
-// use Twilio\Rest\Client;
-
 
 
 class ContactBook
