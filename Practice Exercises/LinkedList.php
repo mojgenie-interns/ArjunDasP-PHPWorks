@@ -38,7 +38,7 @@ class LinkedList
     }
 
 
-    function deleteItem() //First occurance
+    function deleteItem()
     {
         if ($this->head === null) {
             echo "\nList is empty.\n";

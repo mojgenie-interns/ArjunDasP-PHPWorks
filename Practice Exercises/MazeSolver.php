@@ -31,7 +31,7 @@ class MazeSolver
             return false;
         }
 
-        $this->solution[$x][$y] = 1; //Set starting point
+        $this->solution[$x][$y] = 1; //Set path
         $this->maze[$x][$y] = 0; //Mark visited
 
         if ($x == $this->rows - 1 && $y == $this->column - 1) { //Ending point

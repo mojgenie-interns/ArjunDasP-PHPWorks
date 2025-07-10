@@ -6,40 +6,39 @@ class QuizGame
 
     public function __construct()
     {
-        // Add sample questions with options and correct answer
-        $this->questions = [
-    [
-        'question' => "What does HTML stand for?",
-        'options' => ['A) Hyper Trainer Marking Language', 'B) HyperText Markup Language', 'C) HyperText Markdown Language', 'D) HighText Machine Language'],
-        'answer' => 'B'
-    ],
-    [
-        'question' => "Which programming language is primarily used for developing Android apps?",
-        'options' => ['A) Python', 'B) Kotlin', 'C) Swift', 'D) Ruby'],
-        'answer' => 'B'
-    ],
-    [
-        'question' => "What does SQL stand for?",
-        'options' => ['A) Structured Question Language', 'B) Strong Question List', 'C) Structured Query Language', 'D) Simple Query Language'],
-        'answer' => 'C'
-    ],
-    [
-        'question' => "Which company developed the Python programming language?",
-        'options' => ['A) Microsoft', 'B) Bell Labs', 'C) Python Software Foundation', 'D) Google'],
-        'answer' => 'C'
-    ],
-    [
-        'question' => "What is the default port number for HTTP?",
-        'options' => ['A) 443', 'B) 21', 'C) 25', 'D) 80'],
-        'answer' => 'D'
-    ]
-];
 
+        $this->questions = [
+            [
+                'question' => "What does HTML stand for?",
+                'options' => ['A) Hyper Trainer Marking Language', 'B) HyperText Markup Language', 'C) HyperText Markdown Language', 'D) HighText Machine Language'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => "Which programming language is primarily used for developing Android apps?",
+                'options' => ['A) Python', 'B) Kotlin', 'C) Swift', 'D) Ruby'],
+                'answer' => 'B'
+            ],
+            [
+                'question' => "What does SQL stand for?",
+                'options' => ['A) Structured Question Language', 'B) Strong Question List', 'C) Structured Query Language', 'D) Simple Query Language'],
+                'answer' => 'C'
+            ],
+            [
+                'question' => "Which company developed the Python programming language?",
+                'options' => ['A) Microsoft', 'B) Bell Labs', 'C) Python Software Foundation', 'D) Google'],
+                'answer' => 'C'
+            ],
+            [
+                'question' => "What is the default port number for HTTP?",
+                'options' => ['A) 443', 'B) 21', 'C) 25', 'D) 80'],
+                'answer' => 'D'
+            ]
+        ];
     }
 
     public function startQuiz()
     {
-        shuffle($this->questions); // randomize questions
+        shuffle($this->questions);
         $score = 0;
 
         foreach ($this->questions as $q) {
@@ -64,5 +63,3 @@ class QuizGame
 
 $quiz = new QuizGame();
 $quiz->startQuiz();
-
-?>
