@@ -48,7 +48,7 @@ class Calculator
             elseif ($option == 6)
                 exit;
             else
-                echo "Invalid entry. Try again.";
+                echo "\nInvalid entry. Try again.\n";
         }
     }
 }
