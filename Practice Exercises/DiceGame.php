@@ -38,7 +38,7 @@ class DiceGame
             }
         }
 
-        echo "\n--- Final Score ---\n";
+        echo "\n+++ Final Score +++\n";
         echo "Player 1: {$this->player1Score}\n";
         echo "Player 2: {$this->player2Score}\n";
 

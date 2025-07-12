@@ -10,10 +10,11 @@ class DigitalClock
     function displayClock()
     {
         while (true) {
-            // system(strncasecmp(PHP_OS, 'WIN', 3) === 0 ? 'cls' : 'clear');
 
             $this->getDate();
             $this->getTime();
+
+            flush();
 
             sleep(60);
         }
@@ -21,7 +22,7 @@ class DigitalClock
 
     function getDate()
     {
-        echo "\nDate: " . date("Y-m-d") . "\n";
+        echo "Date: " . date("Y-m-d") . "\n";
     }
 
     function getTime()

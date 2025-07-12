@@ -29,6 +29,8 @@ class FlashcardApp
             return;
         }
 
+        shuffle($this->flashcards);
+
         foreach ($this->flashcards as $card) {
             echo "Q: {$card['question']}\n";
             $userAnswer = readline("Enter the answer: ");

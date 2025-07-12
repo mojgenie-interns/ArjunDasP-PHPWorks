@@ -51,8 +51,8 @@ class Stack
     function menu()
     {
         while (true) {
-            echo "\n=== STACK MENU ===";
-            $choice = readline("\n1. Display\n2. Push\n3. Pop\n4. Exit\nEnter the option: ");
+            echo "\n=== STACK MENU ===\n1. Display\n2. Push\n3. Pop\n4. Exit";
+            $choice = readline("\nEnter the option: ");
             if ($choice == 1)
                 $this->displayStack();
             elseif ($choice == 2)

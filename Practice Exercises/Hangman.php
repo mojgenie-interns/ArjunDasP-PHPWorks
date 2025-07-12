@@ -70,5 +70,5 @@ class Hangman
     }
 }
 
-$game = new Hangman("master");
+$game = new Hangman("ATHIRA");
 $game->play();

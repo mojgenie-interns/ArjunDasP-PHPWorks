@@ -1,11 +1,12 @@
 <?php
 
-class Stopwatch
-{
+error_reporting(E_ALL & ~E_DEPRECATED);
 
-    function runStopwatch()
+trait Stopwatch
+{
+    function startStopwatch()
     {
-        echo "Stopwatch started. Press Ctrl+C to stop.\n";
+        echo "\nPress Ctrl+C to stop.\n";
 
         $start = microtime(true);
 
@@ -27,20 +28,69 @@ class Stopwatch
             sleep(1);
         }
     }
+}
 
-    function stopwatchMenu()
+trait Timer
+{
+    private $hours;
+    private $minutes;
+    private $seconds;
+    private $time;
+
+    function getTime()
     {
-        echo "\nSTOPWATCH\n";
-        echo "1. Start\n2. Exit\n";
-        $option = readline("Enter the option: ");
-        if ($option == 1)
-            $this->runStopwatch();
-        elseif ($option == 2)
-            exit;
-        else
-            echo "Enter a valid option";
+        $this->time = readline("Enter the time (HH:MM:SS): ");
+        [$this->hours, $this->minutes, $this->seconds] = explode(":", $this->time);
+
+        // Convert to integers
+        $this->hours = (int) $this->hours;
+        $this->minutes = (int) $this->minutes;
+        $this->seconds = (int) $this->seconds;
+    }
+
+    function startTimer()
+    {
+
+        echo "\n";
+        $this->getTime();
+        // Calculate total seconds
+        $totalSeconds = $this->hours * 3600 + $this->minutes * 60 + $this->seconds;
+
+        while ($totalSeconds > 0) {
+            // Calculate hours, minutes, seconds
+            $hours = floor($totalSeconds / 3600);
+            $minutes = floor(($totalSeconds % 3600) / 60);
+            $seconds = $totalSeconds % 60;
+
+            // Display timer in format HH:MM:SS
+            echo sprintf("\r%02d:%02d:%02d", $hours, $minutes, $seconds);
+            flush();
+
+            sleep(1); // Wait for 1 second
+            $totalSeconds--;
+        }
+
+        echo "\nTime's up.\n";
     }
 }
 
-$start = new Stopwatch;
-$start->runStopwatch();
+class StopwatchTimer
+{
+    use Stopwatch, Timer;
+
+    function run()
+    {
+        echo "\nSTOPWATCH/TIMER\n";
+        echo "1. Stopwatch\n2. Timer\n";
+        $option = readline("Enter one: ");
+        if ($option == 1)
+            $this->startStopwatch();
+        else if ($option == 2)
+            $this->startTimer();
+        else
+            echo "Enter a valid option.\n";
+    }
+}
+
+$app = new StopwatchTimer();
+$app->run();
