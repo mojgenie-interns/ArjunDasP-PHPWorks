@@ -9,7 +9,7 @@ class Puzzle implements MissingNumber
 {
     private $puzzle;
     private $value;
-    private $userAnswer;
+    private $userInput;
 
     public function __construct()
     {
@@ -20,13 +20,13 @@ class Puzzle implements MissingNumber
     public function getInput()
     {
         echo "Puzzle: " . implode(', ', $this->puzzle) . "\n";
-        $this->userAnswer = readline("Enter the missing number: ");
+        $this->userInput = readline("Enter the missing number: ");
     }
 
     public function checkInput()
     {
         $this->getInput();
-        if ($this->userAnswer == $this->value) {
+        if ($this->userInput == $this->value) {
             echo "\nCorrect Answer.\n";
         } else {
             echo "\nWrong Answer. The correct number was {$this->value}.\n";

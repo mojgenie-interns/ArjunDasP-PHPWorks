@@ -1,5 +1,7 @@
 <?php
 
+namespace Puzzle;
+
 class WordScramble
 {
     private $word;
@@ -26,14 +28,12 @@ class WordScramble
     {
         $this->scramble();
         $guess = strtoupper(readline("Guess the word: "));
-        if ($guess !== $this->word) {
-            echo "Wrong answer. Try again.\n";
-            // $this->guessWord();
-        } else {
+        if ($guess === $this->word) {
             echo "Right answer.\n";
+            return true;
+        } else {
+            echo "Wrong answer. Try again.\n";
+            return false;
         }
     }
 }
-
-$word = new WordScramble;
-$word->guessWord();
