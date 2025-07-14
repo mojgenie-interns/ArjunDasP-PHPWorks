@@ -38,7 +38,8 @@ class LinearSearch
                 return;
             }
         }
-        echo "Item not found.\n";
+        echo "Item not found.
+        \n";
     }
 }
 
