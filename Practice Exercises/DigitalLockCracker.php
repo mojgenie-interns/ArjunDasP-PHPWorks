@@ -41,13 +41,11 @@ class DigitalLockCracker
 
             $guess = trim(readline("Enter any 4-digit pin guess: "));
 
-            // Validate guess length
             if (strlen($guess) !== 4 || !ctype_digit($guess)) {
                 echo "Invalid input. Please enter exactly 4 digits.\n";
                 continue;
             }
 
-            // Add guessed digits that are in the original pin
             foreach (str_split($guess) as $digit) {
                 if (strpos($this->pin, $digit) !== false && !in_array($digit, $this->guessedNumbers)) {
                     $this->guessedNumbers[] = $digit;

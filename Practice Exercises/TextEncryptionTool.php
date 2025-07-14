@@ -27,7 +27,7 @@ class TextEncryptionTool //Ceaser cipher
 
     public function decryption()
     {
-        echo "Decrypted text = ";
+        echo "Decrypted text: ";
         $decrypted = '';
         foreach (str_split($this->text) as $char) {
             if (ctype_alpha($char)) {
@@ -42,8 +42,8 @@ class TextEncryptionTool //Ceaser cipher
     }
 }
 
-$text1 = new TextEncryptionTool();
-$text1->encryption();
+// $text1 = new TextEncryptionTool();
+// $text1->encryption();
 
 $text2 = new TextEncryptionTool();
 $text2->decryption();

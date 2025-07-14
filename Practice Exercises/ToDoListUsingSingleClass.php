@@ -5,6 +5,7 @@ class ToDoApp
 
     private $dataFile = "data.json";
     private $data = [];
+    private $fileName;
 
     public function __construct()
     {
