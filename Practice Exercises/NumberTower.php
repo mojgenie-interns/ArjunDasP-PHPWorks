@@ -17,12 +17,12 @@ class NumberTower
                 echo " ";
             }
 
-            // Print ascending numbers
+            // Print ascending numbers (left side)
             for ($j = 1; $j <= $i; $j++) {
                 echo $j;
             }
 
-            // Print descending numbers
+            // Print descending numbers (right side)
             for ($j = $i - 1; $j >= 1; $j--) {
                 echo $j;
             }

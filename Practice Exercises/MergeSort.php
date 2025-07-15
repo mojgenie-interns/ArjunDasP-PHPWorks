@@ -6,7 +6,6 @@ class Merge
 
     function __construct()
     {
-        // Prompt user to enter numbers separated by commas
         $mergeList = readline("Enter the numbers (separated by commas): ");
         $this->list = array_map('intval', explode(",", $mergeList));
     }
@@ -58,10 +57,8 @@ class Merge
     }
 }
 
-// Create object and sort
 $object = new Merge();
 $sorted = $object->mergeSort($object->list);
 
-// Print sorted array
 echo "After Sorting: ";
 echo implode(", ", $sorted) . "\n";

@@ -14,7 +14,7 @@ class InventorySystem
     {
 
         if (file_exists($this->dataFile)) {
-            $this->list = json_decode(file_get_contents($this->dataFile), true) ?? [];
+            $this->list = json_decode(file_get_contents($this->dataFile), true) ?? []; //Null coalescing operator
         } else {
             $this->list = [];
         }
@@ -35,9 +35,9 @@ class InventorySystem
         if ($choice == 1) {
             $this->addItem();
         } elseif ($choice == 2) {
-            $this->viewInventory($this->list);
+            $this->viewItems($this->list);
         } elseif ($choice == 3) {
-            $this->updateItem();
+            $this->editItem();
         } elseif ($choice == 4) {
             $this->deleteItem();
         } elseif ($choice == 5) {
@@ -61,31 +61,28 @@ class InventorySystem
         $this->quantity = readline("Enter the quantity: ");
         $this->price = readline("Enter the price: ");
 
-        $newData = [
-
+        $this->list[] = [
             "item" => $this->name,
             "quantities" => $this->quantity,
             "cost" => $this->price,
         ];
 
-        $this->list[] = $newData;
-
         $this->save();
         echo "\nItem added successfully.\n";
     }
 
-    public function viewInventory($lists)
+    public function viewItems($lists)
     {
-        foreach ($lists as $index => $li) {
+        foreach ($lists as $index => $list) { //For index.
             echo "\n" . ($index + 1) . "\t|";
-            echo " Item: " . $li['item'] . "\t|";
-            echo " Quantity: " . $li['quantities'] . "\t|";
-            echo " Price: " . $li['cost'];
+            echo " Item: " . $list['item'] . "\t|";
+            echo " Quantity: " . $list['quantities'] . "\t|";
+            echo " Price: " . $list['cost'];
         }
         echo "\n";
     }
 
-    public function updateItem()
+    public function editItem()
     {
 
         if (empty($this->list)) {
@@ -93,7 +90,7 @@ class InventorySystem
             return;
         }
 
-        $this->viewInventory($this->list);
+        $this->viewItems($this->list);
 
         $update = readline("\nEnter the index number to edit: ");
 
@@ -117,8 +114,8 @@ class InventorySystem
             $newPrice = readline("\nEnter the new price: ");
             $this->list[$index]['cost'] = $newPrice;
         } elseif ($choice1 == 3) {
-            $newQty = readline("\nEnter the new quantity: ");
-            $this->list[$index]['quantities'] = $newQty;
+            $newQuantity = readline("\nEnter the new quantity: ");
+            $this->list[$index]['quantities'] = $newQuantity;
         } else {
             echo "\nInvalid choice.\n";
         }
@@ -135,14 +132,14 @@ class InventorySystem
             return;
         }
 
-        $this->viewInventory($this->list);
+        $this->viewItems($this->list);
 
         $deleteIndex = readline("\nEnter the number to delete: ");
         $deleteIndex = (int)$deleteIndex - 1;
 
         if (isset($this->list[$deleteIndex])) {
             unset($this->list[$deleteIndex]);
-            $this->list = array_values($this->list);
+            $this->list = array_values($this->list); //Re-indexes
             file_put_contents($this->dataFile, json_encode($this->list, JSON_PRETTY_PRINT));
             echo "\nItem deleted successfully.\n";
         } else {

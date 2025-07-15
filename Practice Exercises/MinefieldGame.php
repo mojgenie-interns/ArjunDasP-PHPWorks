@@ -32,8 +32,8 @@ class MineField
     {
         $row = 1;
         while ($row <= 4) {
-            $start = ($row - 1) * 4 + 1; // e.g., 1,5,9,13
-            $end = $start + 3;           // e.g., 4,8,12,16
+            $start = ($row - 1) * 4 + 1; // 1,5,9,13
+            $end = $start + 3;           // 4,8,12,16
 
             $index = (int)readline("\nChoose a cell from row $row (cell number between $start and $end): ");
 

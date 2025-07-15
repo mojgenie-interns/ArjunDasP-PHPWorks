@@ -36,7 +36,7 @@ class LabEscape
         ];
     }
 
-    public function escape()
+    public function getQuestion()
     {
         $index = array_rand($this->puzzle);
         $question = $this->puzzle[$index];
@@ -61,7 +61,7 @@ class LabEscape
 
 
 
-        $question1 = $this->escape();
+        $question1 = $this->getQuestion();
         $answer1 = strtolower(readline("\nEnter the answer: "));
 
 
@@ -71,7 +71,7 @@ class LabEscape
             echo "\nYou are now in the next room. Solve one more puzzle to escape:\n";
 
             sleep(2);
-            $question2 = $this->escape();
+            $question2 = $this->getQuestion();
             $answer2 = strtolower(readline("\nEnter the answer: "));
 
             if ($answer2 === strtolower($question2['answer'])) {
@@ -85,6 +85,5 @@ class LabEscape
     }
 }
 
-$object = new LabEscape();
-
-$object->runGame();
+$escape = new LabEscape();
+$escape->runGame();

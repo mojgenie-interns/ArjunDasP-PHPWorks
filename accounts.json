@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Arjun Nishadasan",
+        "account_number": "ACC000001",
+        "balance": 3700
+    },
+    {
+        "name": "Abhinav Das Palappilli",
+        "account_number": "ACC000002",
+        "balance": 10
+    },
+    {
+        "name": "Nishamol P",
+        "account_number": "ACC000003",
+        "balance": 4000
+    }
+]

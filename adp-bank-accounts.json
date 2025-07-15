@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Gokul PM",
+        "account_number": "ADP000001",
+        "balance": 15
+    },
+    {
+        "name": "Gopika PM",
+        "account_number": "ADP000002",
+        "balance": 50
+    }
+]

@@ -15,7 +15,7 @@ class TreasureHunt
     {
         echo "\n<--- TREASURE HUNT --->\n";
         echo "Choose correct direction to the treasure.\n";
-        echo "First guess must be correct. Then survive 3 more correct turns!\n";
+        // echo "First guess must be correct. Then survive 3 more correct turns!\n";
 
         $first = $this->getGuess("\nTurn 1");
 
@@ -31,7 +31,7 @@ class TreasureHunt
                 }
             }
 
-            echo "\nYou made 4 correct moves! You found the treasure!\n";
+            echo "\nYou made 4 correct moves. You found the treasure!\n";
         } else {
             echo "\nWrong guess. Game Over!\n";
         }
