@@ -1,101 +1,153 @@
 <?php
-
-class Sliding
+class SlidingPuzzle
 {
+    private $board;
+    private $size = 3;
 
-    public $grid = [];
-
-    public $refference = [];
-
-    function __construct()
+    public function __construct()
     {
-        $this->grid = [
-
-            11,
-            14,
-            7,
-            1,
-            8,
-            null,
-            12,
-            9,
-            3,
-            16,
-            2,
-            5,
-            6,
-            13,
-            15,
-            4
-
-        ];
-
-        $this->refference = [
-
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            null
-        ];
+        $this->initializeBoard();
+        $this->shuffleBoard(10); // do only 10 random valid moves from solved state
     }
 
-
-    public function gridDisplay()
+    private function initializeBoard()
     {
+        $this->board = [];
+        $num = 1;
+        for ($i = 0; $i < $this->size; $i++) {
+            for ($j = 0; $j < $this->size; $j++) {
+                $this->board[$i][$j] = $num;
+                $num++;
+            }
+        }
+        $this->board[$this->size - 1][$this->size - 1] = 0; // empty space
+    }
 
+    private function shuffleBoard($moves)
+    {
+        for ($i = 0; $i < $moves; $i++) {
+            $this->doRandomMove();
+        }
+    }
 
-        for ($i = 0; $i < 16; $i += 4) {
+    private function doRandomMove()
+    {
+        list($emptyRow, $emptyCol) = $this->findEmpty();
+        $directions = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1]
+        ];
+        shuffle($directions);
 
-            echo "+----+----+----+----+----+\n";
-            echo "|";
-            for ($j = 0; $j < 4; $j++) {
-                $val = $this->grid[$i + $j];
-                $cell = $val === null ? " " : $val;
-                echo " " . str_pad($cell, 3, " ", STR_PAD_LEFT) . " |";
+        foreach ($directions as [$dr, $dc]) {
+            $newRow = $emptyRow + $dr;
+            $newCol = $emptyCol + $dc;
+
+            if ($this->isValid($newRow, $newCol)) {
+                $this->swap($emptyRow, $emptyCol, $newRow, $newCol);
+                return;
+            }
+        }
+    }
+
+    private function isValid($row, $col)
+    {
+        return $row >= 0 && $row < $this->size && $col >= 0 && $col < $this->size;
+    }
+
+    private function swap($row1, $col1, $row2, $col2)
+    {
+        $temp = $this->board[$row1][$col1];
+        $this->board[$row1][$col1] = $this->board[$row2][$col2];
+        $this->board[$row2][$col2] = $temp;
+    }
+
+    private function printBoard()
+    {
+        echo "\n";
+        for ($i = 0; $i < $this->size; $i++) {
+            for ($j = 0; $j < $this->size; $j++) {
+                $cell = $this->board[$i][$j];
+                echo $cell === 0 ? "   " : str_pad($cell, 2, " ", STR_PAD_LEFT) . " ";
             }
             echo "\n";
         }
-        echo "+----+----+----+----+----+\n";
+        echo "\n";
     }
 
-    public function gridMove()
+    private function findEmpty()
     {
+        for ($i = 0; $i < $this->size; $i++) {
+            for ($j = 0; $j < $this->size; $j++) {
+                if ($this->board[$i][$j] === 0) {
+                    return [$i, $j];
+                }
+            }
+        }
+        return null;
+    }
 
-        $input = readline("Enter the index and Number eg :(0,2):\n ");
-        list($index, $number) = explode(",", $input);
-        $index = (int)$index;
-        $number = (int)$number;
-        $newindex = array_search($number, $this->grid);
+    private function moveTile($tile)
+    {
+        list($emptyRow, $emptyCol) = $this->findEmpty();
 
-        if ($this->grid[$index] != null) {
-            echo "enter  null index\n";
-        } elseif ($newindex == $index - 1 || $newindex == $index + 1 || $newindex == $index + 4 || $newindex == $index - 4) {
+        $directions = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1]
+        ];
 
-            $this->grid[$index] = $number;
-            //$newindex = array_search($number,$this->grid);
-            $this->grid[$newindex] = null;
-        } else {
-            echo "Invalid Move::\n";
+        foreach ($directions as [$dr, $dc]) {
+            $newRow = $emptyRow + $dr;
+            $newCol = $emptyCol + $dc;
+
+            if ($this->isValid($newRow, $newCol) && $this->board[$newRow][$newCol] == $tile) {
+                $this->swap($emptyRow, $emptyCol, $newRow, $newCol);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function isSolved()
+    {
+        $num = 1;
+        for ($i = 0; $i < $this->size; $i++) {
+            for ($j = 0; $j < $this->size; $j++) {
+                if ($i == $this->size - 1 && $j == $this->size - 1) {
+                    if ($this->board[$i][$j] !== 0) return false;
+                } else {
+                    if ($this->board[$i][$j] !== $num) return false;
+                    $num++;
+                }
+            }
+        }
+        return true;
+    }
+
+    public function play()
+    {
+        while (true) {
+            $this->printBoard();
+
+            if ($this->isSolved()) {
+                echo "Congratulations! You solved the puzzle!\n";
+                break;
+            }
+
+            $input = readline("Tile to move: ");
+            $tile = intval($input);
+
+            if (!$this->moveTile($tile)) {
+                echo "Can't move tile $tile. Try another tile.\n";
+            }
         }
     }
 }
 
-$object = new Sliding();
-$object->gridDisplay();
-
-while ($object->grid != $object->refference) {
-    $object->gridMove();
-    $object->gridDisplay();
-}
+// Run the game
+$game = new SlidingPuzzle();
+$game->play();

@@ -80,9 +80,9 @@ class Sudoku
         for ($i = 0; $i < 4; $i++) {
             $seen = [];
             for ($j = 0; $j < 4; $j++) {
-                $v = $this->fixed[$i][$j];
-                if ($v && in_array($v, $seen)) return false;
-                $seen[] = $v;
+                $value = $this->fixed[$i][$j];
+                if ($value && in_array($value, $seen)) return false;
+                $seen[] = $value;
             }
         }
 
@@ -90,9 +90,9 @@ class Sudoku
         for ($j = 0; $j < 4; $j++) {
             $seen = [];
             for ($i = 0; $i < 4; $i++) {
-                $v = $this->fixed[$i][$j];
-                if ($v && in_array($v, $seen)) return false;
-                $seen[] = $v;
+                $value = $this->fixed[$i][$j];
+                if ($value && in_array($value, $seen)) return false;
+                $seen[] = $value;
             }
         }
 
@@ -102,9 +102,9 @@ class Sudoku
                 $seen = [];
                 for ($i = $sr; $i < $sr + 2; $i++) {
                     for ($j = $sc; $j < $sc + 2; $j++) {
-                        $v = $this->fixed[$i][$j];
-                        if ($v && in_array($v, $seen)) return false;
-                        $seen[] = $v;
+                        $value = $this->fixed[$i][$j];
+                        if ($value && in_array($value, $seen)) return false;
+                        $seen[] = $value;
                     }
                 }
             }
