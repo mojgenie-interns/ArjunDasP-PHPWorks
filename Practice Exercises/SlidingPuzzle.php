@@ -148,6 +148,5 @@ class SlidingPuzzle
     }
 }
 
-// Run the game
 $game = new SlidingPuzzle();
 $game->play();
